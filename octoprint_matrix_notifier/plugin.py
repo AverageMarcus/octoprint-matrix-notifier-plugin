@@ -218,7 +218,9 @@ class MatrixNotifierPlugin(octoprint.plugin.EventHandlerPlugin,
         keys["temperature"] = self.temperature_status_string
         printer_data = self._printer.get_current_data()
         keys["remaining_time"] = self._seconds_delta_to_string(printer_data["progress"]["printTimeLeft"])
-        keys["completion_time"] = (datetime.datetime.now() + printer_data["progress"]["printTimeLeft"]).strftime("%m/%d/%Y, %H:%M:%S")
+        keys["completion_time"] = "n/a"
+        if printer_data["progress"]["printTimeLeft"] is not None:
+            keys["completion_time"] = (datetime.datetime.now() + printer_data["progress"]["printTimeLeft"]).strftime("%m/%d/%Y, %H:%M:%S")
         keys["total_estimated_time"] = self._seconds_delta_to_string(printer_data["job"]["estimatedPrintTime"])
         keys["elapsed_time"] = self._seconds_delta_to_string(printer_data["progress"]["printTime"])
         keys["user"] = printer_data["job"]["user"]
