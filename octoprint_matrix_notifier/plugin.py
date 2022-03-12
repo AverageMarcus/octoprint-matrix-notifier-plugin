@@ -31,6 +31,22 @@ class MatrixNotifierPlugin(octoprint.plugin.EventHandlerPlugin,
             "room": "#myprinter:matrix.org",
             "send_snapshot": True,
             "events": {
+                "Connected": {
+                    "template": dedent("""\
+                    ## Printer Connected 🔌
+
+                    **File**: {filename}
+                    **User**: {user}
+                    {temperature}
+                    """),
+                    "enabled": False,
+                },
+                "Disconnected": {
+                    "template": dedent("""\
+                    ## Printer Disconnected ‼️
+                    """),
+                    "enabled": False,
+                },
                 "PrintStarted": {
                     "template": dedent("""\
                     ## Print Started 🚀
@@ -76,6 +92,19 @@ class MatrixNotifierPlugin(octoprint.plugin.EventHandlerPlugin,
                     {temperature}
                     """),
                     "enabled": True,
+                },
+                "PrintResumed": {
+                    "template": dedent("""\
+                    ## Print Resumes ▶️
+
+                    **File**: {filename}
+                    **User**: {user}
+                    **Elapsed Time**: {elapsed_time}
+                    **Remaining Time**: {remaining_time}
+                    **Total Estimated Time**:{total_estimated_time}
+                    {temperature}
+                    """),
+                    "enabled": False,
                 },
                 "progress": {
                     "template": dedent("""\

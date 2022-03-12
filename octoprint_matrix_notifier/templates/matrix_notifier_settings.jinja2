@@ -34,6 +34,22 @@
 
   <h4>{{ _('Message Content') }}</h4>
 
+	<div class="control-group" title="{{ _('Content of printer connected notification') }}">
+		<label class="control-label">{{ _('Printer Connected') }}</label>
+		<div class="controls">
+			<input type="checkbox" data-bind="value: settings.plugins.matrix_notifier.events.Connected.enabled" /> Enabled
+      <textarea class="input-block-level" rows="6" name="text" placeholder="Enter text" data-bind="value: settings.plugins.matrix_notifier.events.Connected.template"></textarea>
+		</div>
+	</div>
+
+	<div class="control-group" title="{{ _('Content of printer disconnected notification') }}">
+		<label class="control-label">{{ _('Printer Disconnected') }}</label>
+		<div class="controls">
+			<input type="checkbox" data-bind="value: settings.plugins.matrix_notifier.events.Disconnected.enabled" /> Enabled
+      <textarea class="input-block-level" rows="6" name="text" placeholder="Enter text" data-bind="value: settings.plugins.matrix_notifier.events.Disconnected.template"></textarea>
+		</div>
+	</div>
+
 	<div class="control-group" title="{{ _('Content of print started notification') }}">
 		<label class="control-label">{{ _('Print Started') }}</label>
 		<div class="controls">
@@ -63,6 +79,14 @@
 		<div class="controls">
 			<input type="checkbox" data-bind="value: settings.plugins.matrix_notifier.events.PrintPaused.enabled" /> Enabled
       <textarea class="input-block-level" rows="6" name="text" placeholder="Enter text" data-bind="value: settings.plugins.matrix_notifier.events.PrintPaused.template"></textarea>
+		</div>
+	</div>
+
+	<div class="control-group" title="{{ _('Content of print resumed notification') }}">
+		<label class="control-label">{{ _('Print Resumed') }}</label>
+		<div class="controls">
+			<input type="checkbox" data-bind="value: settings.plugins.matrix_notifier.events.PrintResumed.enabled" /> Enabled
+      <textarea class="input-block-level" rows="6" name="text" placeholder="Enter text" data-bind="value: settings.plugins.matrix_notifier.events.PrintResumed.template"></textarea>
 		</div>
 	</div>
 
