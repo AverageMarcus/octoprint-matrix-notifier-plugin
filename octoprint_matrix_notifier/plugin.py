@@ -239,7 +239,7 @@ class MatrixNotifierPlugin(octoprint.plugin.EventHandlerPlugin,
 
         self._logger.info("Got event %s with payload %s", event, payload)
 
-        if self._settings.get(["events", event, "enabled"]) or True:
+        if self._settings.get(["events", event, "enabled"]) or False:
             template = self._settings.get(["events", event, "template"])
 
         keys = self.generate_message_keys()
@@ -253,9 +253,10 @@ class MatrixNotifierPlugin(octoprint.plugin.EventHandlerPlugin,
 
         message = template.format(**keys)
 
-        self.client.room_send_markdown_message(self.room_id, message)
-        if self._settings.get(["send_snapshot"]):
-            self.send_snapshot()
+        if message != "" and message is not None:
+            self.client.room_send_markdown_message(self.room_id, message)
+            if self._settings.get(["send_snapshot"]):
+                self.send_snapshot()
 
     def on_print_progress(self, storage, path, progress):
         interval = int(self._settings.get(["events", "progress", "interval"])) or 1
