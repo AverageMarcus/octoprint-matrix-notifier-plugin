@@ -7,7 +7,7 @@ Send messages and snapshots to matrix rooms.
 Install via the bundled [Plugin Manager](https://docs.octoprint.org/en/master/bundledplugins/pluginmanager.html)
 or manually using this URL:
 
-    https://github.com/Cadair/octoprint-matrix-notifier-plugin/archive/main.zip
+    https://github.com/AverageMarcus/octoprint-matrix-notifier-plugin/archive/main.zip
 
 ## Configuration
 
